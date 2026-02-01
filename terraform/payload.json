@@ -1,0 +1,4 @@
+{
+    "source":"terraform-test",
+    "slow_requests":7
+}

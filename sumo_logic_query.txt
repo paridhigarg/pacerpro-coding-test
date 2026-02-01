@@ -1,0 +1,1 @@
+_sourcecategory=prod/webapp | where endpoint ="/api/data" | where response_time_ms >3000 | timeslice 10m | count as slow_requests | where slow_requests >5
