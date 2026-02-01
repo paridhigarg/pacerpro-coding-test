@@ -29,4 +29,7 @@ Automated EC2 reboot using Sumo Logic alerts, AWS Lambda, SNS, and Terraform
 
 
 Testing note (Sumo not available):
-The Lambda is designed to be triggered by the Sumo Logic alert payload. Because I did not have access to real Sumo Logic logs/alerts in this environment, I tested the Lambda using the AWS console “Test” event with a representative JSON payload ({"source":"manual-test"}). This validates the core requirements: the function triggers, reboots the target EC2 instance, and publishes a notification to SNS. In a real setup, Sumo would invoke the Lambda via an alert action (e.g., webhook → API Gateway → Lambda), and the incoming alert JSON would appear in the event (or event["body"] for API Gateway proxy events)
+The Lambda is designed to be triggered by the Sumo Logic alert payload. Because I did not have access to real Sumo Logic logs/alerts in this environment, I tested the Lambda using the AWS console “Test” event with a representative JSON payload ({
+    "source":"terraform-test",
+    "slow_requests":7
+}). This validates the core requirements: the function triggers, reboots the target EC2 instance, and publishes a notification to SNS. In a real setup, Sumo would invoke the Lambda via an alert action (e.g., webhook → API Gateway → Lambda), and the incoming alert JSON would appear in the event (or event["body"] for API Gateway proxy events)
